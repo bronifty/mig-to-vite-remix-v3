@@ -1,5 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,10 +6,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+import "./tailwind.css";
+import "highlight.js/styles/github-dark.css";
+import NavigationBar from "./components/NavigationBar";
 
 export default function App() {
   return (
@@ -23,10 +20,11 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <NavigationBar />
         <Outlet />
         <ScrollRestoration />
-        <Scripts />
         <LiveReload />
+        <Scripts />
       </body>
     </html>
   );
